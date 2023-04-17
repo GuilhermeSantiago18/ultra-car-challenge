@@ -1,10 +1,46 @@
-import React from "react";
-import {Button} from '@mui/material'
-import TableCustomers from "../components/TableCustomers";
+import { useState } from 'react';
+import { TextField, Button, Box, Typography, FormLabel } from '@mui/material';
 
-export default function Home() {
+function Home() {
+  const [name, setName] = useState('');
+  const [password, setPassword] = useState('');
+
+  const handleNameChange = (event) => {
+    setName(event.target.value);
+  };
+
+  const handlePasswordChange = (event) => {
+    setPassword(event.target.value);
+  };
+
+  const handleSubmit = (event) => {
+    event.preventDefault();
+   
+  };
+
   return (
-    <div>
-    </div>
+    <Box justifyContent="space-between">
+      <Typography variant="h6">UltraCar System</Typography>
+      <FormLabel onSubmit={handleSubmit}>
+        <TextField
+          label="Usuário"
+          variant="outlined"
+          value={name}
+          onChange={handleNameChange}
+        />
+        <TextField
+          label="Senha"
+          variant="outlined"
+          type="password"
+          value={password}
+          onChange={handlePasswordChange}
+        />
+        <Button variant="contained" type="submit">
+          Submit
+        </Button>
+      </FormLabel>
+    </Box>
   );
 }
+
+export default Home;
