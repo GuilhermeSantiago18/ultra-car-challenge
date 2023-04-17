@@ -1,15 +1,17 @@
-import { useState } from 'react'
-import './App.css'
+import { Route, Routes } from "react-router-dom";
+import { useState } from "react";
+import "./App.css";
+import Home from "./pages/Home";
 
 function App() {
-  const [count, setCount] = useState(0)
+  const [count, setCount] = useState(0);
 
   return (
-    <div >
-      Hello world
-      <button onClick={() => console.log(count +=1)}>BTN</button>
-    </div>
-  )
+    <Routes>
+      <Route exact path="/" element={ <Home /> } />
+      {/* <Route exact path="/login" /> */}
+    </Routes>
+  );
 }
 
-export default App
+export default App;
