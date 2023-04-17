@@ -17,12 +17,12 @@ function Home() {
 
   const handleSubmit = (event) => {
     event.preventDefault();
-    navigate('/servicos')
+    navigate('/workspace')
    
   };
 
   return (
-    <Box justifyContent="space-between">
+    <Box>
       <Typography variant="h6">UltraCar System</Typography>
       <FormLabel onSubmit={handleSubmit}>
         <TextField
