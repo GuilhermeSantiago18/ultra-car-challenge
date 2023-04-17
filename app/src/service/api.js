@@ -10,3 +10,8 @@ export const requestCustomers = async () => {
   const response = await api.get('/customers');
   return response;
 };
+
+export const requestEmployees = async () => {
+    const response = await api.get('/employees');
+    return response;
+  };
