@@ -1,9 +1,11 @@
 import { useState } from 'react';
+import { useNavigate } from 'react-router-dom'
 import { TextField, Button, Box, Typography, FormLabel } from '@mui/material';
 
 function Home() {
   const [name, setName] = useState('');
   const [password, setPassword] = useState('');
+  const navigate = useNavigate()
 
   const handleNameChange = (event) => {
     setName(event.target.value);
@@ -15,6 +17,7 @@ function Home() {
 
   const handleSubmit = (event) => {
     event.preventDefault();
+    navigate('/servicos')
    
   };
 
@@ -35,7 +38,7 @@ function Home() {
           value={password}
           onChange={handlePasswordChange}
         />
-        <Button variant="contained" type="submit">
+        <Button variant="contained" type="submit" onClick={handleSubmit}>
           Submit
         </Button>
       </FormLabel>
