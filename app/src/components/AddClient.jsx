@@ -8,12 +8,12 @@ export default function AddClient() {
   const [CPF, setCPF] = useState('')
 
   const handleChangeName = ({target}) => {
-    setName(event.target.value)
+    setName(target.value)
     
   }
 
   const handleChangeCPF = ({target}) => {
-    setCPF(event.target.value)
+    setCPF(target.value)
     
   }
 
@@ -23,7 +23,6 @@ export default function AddClient() {
       name,
       CPF,
     }
-    console.log(data)
     await requestNewCustomer(data)
   };
   return (
@@ -31,6 +30,7 @@ export default function AddClient() {
       <Box>
         <TextField label="Nome do Cliente" variant="outlined" value={name} onChange={handleChangeName}/>
         <TextField label="CPF" variant="outlined" value={CPF} onChange={handleChangeCPF}/>
+        <TextField label="Responsável" variant="outlined" value={CPF} onChange={handleChangeCPF}/>
         <Button variant="contained" type="submit" onClick={handleSubmit}>
           Adicionar Cliente
         </Button>

@@ -3,12 +3,18 @@
     "id": "1",
     "name": "Funcionario1",
     "cpf": "12345678910",
-    "status": "avaible"
+    "status": "disponível"
   },
   {
     "id": "2",
     "name": "Funcionario2",
     "cpf": "11111111122",
-    "status": "unavaible"
+    "status": "Em Atendimento"
+  },
+  {
+    "id": "3",
+    "name": "Funcionario3",
+    "cpf": "22221111122",
+    "status": "Em Atendimento"
   }
 ]

@@ -1,6 +1,6 @@
 import { useState } from 'react';
 import { useNavigate } from 'react-router-dom'
-import { TextField, Button, Box, Typography, FormLabel } from '@mui/material';
+import { TextField, Button, Box, Typography, FormLabel, Container, FormControl, Stack } from '@mui/material';
 
 function Home() {
   const [name, setName] = useState('');
@@ -22,9 +22,16 @@ function Home() {
   };
 
   return (
-    <Box>
-      <Typography variant="h6">UltraCar System</Typography>
-      <FormLabel onSubmit={handleSubmit}>
+    <Stack>
+      <Box
+         sx={{
+          minWidth: { xs: 350, md: 350 },
+        }}
+        component="img"
+        src="https://ultracar.com.br/sistema-gestao-oficina-mecanica/programa-gerenciamento-oficina-mecanica/wp-content/uploads/2019/09/LOGO-TOPO-SITE.png"
+      />
+      <Box>
+      <FormControl onSubmit={handleSubmit} sx={{width: "70%"}}>
         <TextField
           label="Usuário"
           variant="outlined"
@@ -39,10 +46,11 @@ function Home() {
           onChange={handlePasswordChange}
         />
         <Button variant="contained" type="submit" onClick={handleSubmit}>
-          Submit
+          Entrar
         </Button>
-      </FormLabel>
-    </Box>
+      </FormControl>
+      </Box>
+      </Stack>
   );
 }
 

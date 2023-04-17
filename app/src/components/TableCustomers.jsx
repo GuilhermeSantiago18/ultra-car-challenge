@@ -39,7 +39,8 @@ export default function TableCustomers() {
           <StyledTableRow>
             <StyledTableCell>Name</StyledTableCell>
             <StyledTableCell align="center">Placa</StyledTableCell>
-            <StyledTableCell align="right">CPF</StyledTableCell>
+            <StyledTableCell align="center">Responsável</StyledTableCell>
+            <StyledTableCell align="center">CPF</StyledTableCell>
           </StyledTableRow>
         </TableHead>
         <TableBody>
@@ -51,7 +52,10 @@ export default function TableCustomers() {
               <StyledTableCell component="th" scope="row" align="center">
                 {customer.placa}
               </StyledTableCell>
-              <StyledTableCell align="right">{customer.cpf}</StyledTableCell>
+              <StyledTableCell component="th" scope="row" align="center">
+                {customer.responsable}
+              </StyledTableCell>
+              <StyledTableCell align="center">{customer.cpf}</StyledTableCell>
             </StyledTableRow>
           ))}
         </TableBody>

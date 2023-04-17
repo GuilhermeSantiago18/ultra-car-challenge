@@ -1,9 +1,10 @@
 import { useState } from "react";
-import { Box, Button, Tab, Tabs, Typography } from "@mui/material";
+import { Box, Button, ImageList, Tab, Tabs, Typography } from "@mui/material";
 import { useNavigate } from "react-router-dom";
 import AddClient from "../components/AddClient";
 import TableCustomers from "../components/TableCustomers";
 import TableEmployees from "../components/TableEmployees";
+import theme from "../themes/theme";
 
 function Workspace() {
   const [value, setValue] = useState(0);
@@ -18,15 +19,19 @@ function Workspace() {
   };
 
   return (
-    <Box>
-      <Box display="flex" justifyContent="space-between" p={2}>
-        <Button variant="contained" onClick={handleLogout} style={{ cursor: "pointer" }}>
+    <Box width="100%" bgcolor="white">
+      <Box justifyContent="space-between" p={2}>
+        <Button
+          variant="contained"
+          onClick={handleLogout}
+          style={{ cursor: "pointer" }}
+        >
           Logout
         </Button>
       </Box>
       <Tabs value={value} onChange={handleChange}>
-        <Tab label="Clientes do dia" />
-        <Tab label="Funcionários Atendendo" />
+        <Tab label="Clientes do dia" fullWidth />
+        <Tab label="Funcionários" />
         <Tab label="Adicionar novo cliente" />
       </Tabs>
       {value === 0 && (
@@ -39,14 +44,12 @@ function Workspace() {
           <Typography variant="h6">{<TableEmployees />}</Typography>
         </Box>
       )}
-       {value === 2 && (
+      {value === 2 && (
         <Box p={2}>
           <Typography variant="h6">{<AddClient />}</Typography>
         </Box>
       )}
-
     </Box>
-   
   );
 }
 
