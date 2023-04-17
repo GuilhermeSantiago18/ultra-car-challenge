@@ -38,6 +38,7 @@ export default function TableCustomers() {
         <TableHead>
           <StyledTableRow>
             <StyledTableCell>Name</StyledTableCell>
+            <StyledTableCell align="center">Placa</StyledTableCell>
             <StyledTableCell align="right">CPF</StyledTableCell>
           </StyledTableRow>
         </TableHead>
@@ -46,6 +47,9 @@ export default function TableCustomers() {
             <StyledTableRow key={customer.id}>
               <StyledTableCell component="th" scope="row">
                 {customer.name}
+              </StyledTableCell>
+              <StyledTableCell component="th" scope="row" align="center">
+                {customer.placa}
               </StyledTableCell>
               <StyledTableCell align="right">{customer.cpf}</StyledTableCell>
             </StyledTableRow>

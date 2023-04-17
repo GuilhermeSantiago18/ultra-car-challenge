@@ -31,13 +31,13 @@ export default function TableEmployees() {
     };
     fetchEmployees();
   }, []);
-
   return (
     <TableContainer component={Paper}>
       <Table sx={{ minWidth: 500 }}>
         <TableHead>
           <StyledTableRow>
             <StyledTableCell>Name</StyledTableCell>
+            <StyledTableCell align="center">Status</StyledTableCell>
             <StyledTableCell align="right">CPF</StyledTableCell>
           </StyledTableRow>
         </TableHead>
@@ -46,6 +46,9 @@ export default function TableEmployees() {
             <StyledTableRow key={employee.id}>
               <StyledTableCell component="th" scope="row">
                 {employee.name}
+              </StyledTableCell>
+              <StyledTableCell component="th" scope="row" align="center">
+                {employee.status}
               </StyledTableCell>
               <StyledTableCell align="right">{employee.cpf}</StyledTableCell>
             </StyledTableRow>

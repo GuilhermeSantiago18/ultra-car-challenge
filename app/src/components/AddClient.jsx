@@ -23,6 +23,7 @@ export default function AddClient() {
       name,
       CPF,
     }
+    console.log(data)
     await requestNewCustomer(data)
   };
   return (

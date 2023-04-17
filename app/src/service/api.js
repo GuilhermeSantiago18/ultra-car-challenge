@@ -10,8 +10,8 @@ export const requestCustomers = async () => {
   return response;
 };
 
-export const requestNewCustomer = async () => {
-  const response = await api.post("/customers");
+export const requestNewCustomer = async (data) => {
+  const response = await api.post("/customers", data);
   return response;
 };
 
