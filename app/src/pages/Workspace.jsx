@@ -31,13 +31,11 @@ function Workspace() {
       {value === 0 && (
         <Box p={2}>
           <Typography variant="h6">{<TableCustomers />}</Typography>
-          {/* Adicione aqui o código para exibir os clientes do dia */}
         </Box>
       )}
       {value === 1 && (
         <Box p={2}>
           <Typography variant="h6">{<TableEmployees />}</Typography>
-          {/* Adicione aqui o código para exibir os funcionários que estão atendendo */}
         </Box>
       )}
 

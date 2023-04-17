@@ -1,18 +1,24 @@
 import { useState, useEffect } from "react";
 import { requestCustomers } from "../service/api";
 import { styled } from "@mui/system";
-import { Table, TableBody, TableCell, TableContainer, TableHead, TableRow, Paper } from "@mui/material";
+import {
+  Paper,
+  Table,
+  TableBody,
+  TableCell,
+  TableContainer,
+  TableHead,
+  TableRow,
+} from "@mui/material";
 
 const StyledTableCell = styled(TableCell)({
-  backgroundColor: "#ECEFF1",
+  backgroundColor: "#C1C1C1",
   color: "#000",
   fontWeight: "bold",
 });
 
 const StyledTableRow = styled(TableRow)({
-  "&:nth-of-type(odd)": {
-    backgroundColor: "#CFD8DC",
-  },
+  backgroundColor: "#CFD8DC",
 });
 
 export default function TableCustomers() {
@@ -20,7 +26,7 @@ export default function TableCustomers() {
 
   useEffect(() => {
     const fetchCustomers = async () => {
-      const {data} = await requestCustomers();
+      const { data } = await requestCustomers();
       setCustomers(data);
     };
     fetchCustomers();
@@ -28,7 +34,7 @@ export default function TableCustomers() {
 
   return (
     <TableContainer component={Paper}>
-      <Table sx={{ minWidth: 500 }} aria-label="simple table">
+      <Table sx={{ minWidth: 500 }}>
         <TableHead>
           <StyledTableRow>
             <StyledTableCell>Name</StyledTableCell>

@@ -1,5 +1,14 @@
 [
-    { "id": "1", "name": "Funcionario1", "cpf": "12345678910" },
-    { "id": "2", "name": "Funcionario2", "cpf": "11111111122" }
-  ]
-  
+  {
+    "id": "1",
+    "name": "Funcionario1",
+    "cpf": "12345678910",
+    "status": "avaible"
+  },
+  {
+    "id": "2",
+    "name": "Funcionario2",
+    "cpf": "11111111122",
+    "status": "unavaible"
+  }
+]
