@@ -9,7 +9,7 @@ import {
   TableHead,
   TableRow,
 } from "@mui/material";
-import { request } from "../service/api";
+import { getAll } from "../service/api";
 
 const StyledTableCell = styled(TableCell)({
   backgroundColor: "#C1C1C1",
@@ -26,7 +26,7 @@ export default function TableCustomers() {
 
   useEffect(() => {
     const fetchCustomers = async () => {
-      const { data } = await request('customers1');
+      const { data } = await getAll('customers1');
       setCustomers(data);
     };
     fetchCustomers();

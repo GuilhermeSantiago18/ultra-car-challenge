@@ -1,18 +1,22 @@
 import { useState } from "react";
-import { Box, Button, ImageList, Tab, Tabs, Typography } from "@mui/material";
+import { Box, Button, Tab, Tabs, Typography } from "@mui/material";
 import { useNavigate } from "react-router-dom";
 import AddClient from "../components/AddClient";
 import TableCustomers from "../components/TableCustomers";
 import TableAutoParts from "../components/TableAutoParts";
-import theme from "../themes/theme";
 import Header from "../components/Header";
 
 function Workspace() {
   const [value, setValue] = useState(0);
 
-  const handleChange = (event, newValue) => {
+  const navigate = useNavigate()
+
+  const handleChange = (_, newValue) => {
     setValue(newValue);
   };
+  const handleCLick = () => {
+    navigate('/checkout')
+  }
 
 
   return (
@@ -38,6 +42,7 @@ function Workspace() {
           <Typography variant="h6">{<AddClient />}</Typography>
         </Box>
       )}
+      <Button variant="contained" onClick={handleCLick}>Finalizar Atendimento</Button>
     </Box>
   );
 }

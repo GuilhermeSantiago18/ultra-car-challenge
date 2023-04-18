@@ -1,13 +1,12 @@
 import { Box, TextField, Button, Select, MenuItem, FormControl } from "@mui/material";
-import { useState, useEffect } from "react";
-import { newCustomer } from "../service/api.js";
+import { useState } from "react";
+import { insert } from "../service/api.js";
 
 
 const EMPLOYEES = ['Joao', 'Felipe', 'Maria', 'Sandra'];
 
 export default function AddClient() {
   const [queryData, setQueryData] = useState({});
-  const [employees, setEmployees] = useState([]);
 
 
   const handleChange = (event) => {
@@ -26,18 +25,9 @@ export default function AddClient() {
     };
 
   
-    const crud = await newCustomer('customer1', data);
+    const crud = await insert('customer1', data);
     console.log(crud)
   };
-
-
-  useEffect(() => {
-    const fetchResponsables = async () => {
-      // const { data } = await requestEmployees();
-      // setEmployees(data);
-    };
-    fetchResponsables();
-  }, []);
 
   return (
     <Box sx={{ minWidth: 900 }}>

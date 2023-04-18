@@ -1,4 +1,4 @@
-import { Button } from '@mui/material';
+import { Box, Button } from '@mui/material';
 import { useNavigate } from 'react-router-dom';
 
 export default function Header() {
@@ -8,6 +8,13 @@ export default function Header() {
       };
   return (
     <div>
+      <Box
+          sx={{
+            maxWidth: { xs: 150, md: 150 },
+          }}
+          component="img"
+          src="https://ultracar.com.br/sistema-gestao-oficina-mecanica/programa-gerenciamento-oficina-mecanica/wp-content/uploads/2019/09/LOGO-TOPO-SITE.png"
+        />
          <Button
           variant="contained"
           onClick={handleLogout}

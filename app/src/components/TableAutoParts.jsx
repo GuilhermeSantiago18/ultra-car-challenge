@@ -8,8 +8,12 @@ import {
   TableHead,
   TableRow,
   Paper,
+  Container,
+  TextField,
+  Button,
 } from "@mui/material";
-import { request } from "../service/api";
+import { getAll, insert } from "../service/api";
+import { useNavigate } from "react-router-dom";
 
 const StyledTableCell = styled(TableCell)({
   backgroundColor: "#C1C1C1",
@@ -23,15 +27,34 @@ const StyledTableRow = styled(TableRow)({
 
 export default function TableAutoParts() {
   const [parts, setParts] = useState([])
+  const [queryParts, setQueryParts] = useState({})
+
+  const navigate = useNavigate()
 
   useEffect(() => {
     const fetchParts = async () => {
-      const { data } = await request('parts5');
+      const { data } = await getAll('parts5');
       setParts(data);
     };
     fetchParts();
   }, []);
+
+  const handleChange = (event) => {
+    const { name, value } = event.target;
+    setQueryParts({ ...queryParts, [name]: value });
+  };
+
+  const handleClickParts = async (event) => {
+      event.preventDefault();
+      const parts = {
+        motor: queryParts.motor,
+        quantity: queryParts.quantity,
+        value: queryParts.value
+      }
+      await insert('parts5', parts)
+  }
   return (
+    <Container>
     <TableContainer component={Paper} sx={{ minWidth: 900 }}>
       <Table>
         <TableHead>
@@ -48,13 +71,36 @@ export default function TableAutoParts() {
                 {employee.motor}
               </StyledTableCell>
               <StyledTableCell component="th" scope="row" align="center">
-                {employee.quantidade}
+                {employee.quantity}
               </StyledTableCell>
-              <StyledTableCell align="right">{employee.valor}</StyledTableCell>
+              <StyledTableCell align="right">{employee.value}</StyledTableCell>
             </StyledTableRow>
           ))}
         </TableBody>
       </Table>
     </TableContainer>
+    <TextField
+          label="Peça"
+          variant="outlined"
+          name="motor"
+          sx={{mb: 1}}
+          onChange={handleChange}
+        />
+        <TextField
+          label="Quantidade"
+          variant="outlined"
+          name="quantity"
+          sx={{mb: 1}}
+          onChange={handleChange}
+        />
+        <TextField
+          label="Valor"
+          variant="outlined"
+          name="value"
+          sx={{mb: 1}}
+          onChange={handleChange}
+        />
+        <Button type="submit" variant="contained" onClick={handleClickParts}>Adicionar</Button>
+    </Container>
   );
 }
