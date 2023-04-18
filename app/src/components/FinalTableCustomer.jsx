@@ -17,7 +17,9 @@ export default function FinalTableCustomer({ customer }) {
       <Table>
         <TableHead>
           <StyledTableRow>
-            <StyledTableCell align="center">Data de Entrada</StyledTableCell>
+            <StyledTableCell align="center">Data de entrada</StyledTableCell>
+            <StyledTableCell align="center">Data de saída</StyledTableCell>
+            <StyledTableCell align="center">Placa</StyledTableCell>
             <StyledTableCell align="center">Nome</StyledTableCell>
             <StyledTableCell align="center">Responsável</StyledTableCell>
             <StyledTableCell align="center">Telefone</StyledTableCell>
@@ -29,6 +31,12 @@ export default function FinalTableCustomer({ customer }) {
             <StyledTableRow key={client._id}>
               <StyledTableCell component="th" scope="row" align="center">
                 {client.entryTime}
+              </StyledTableCell>
+              <StyledTableCell component="th" scope="row" align="center">
+                {client.outTime}
+              </StyledTableCell>
+              <StyledTableCell component="th" scope="row" align="center">
+                {client.license}
               </StyledTableCell>
               <StyledTableCell align="center">{client.name}</StyledTableCell>
               <StyledTableCell align="center">{client.responsable}</StyledTableCell>

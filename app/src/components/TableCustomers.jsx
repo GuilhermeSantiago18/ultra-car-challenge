@@ -26,7 +26,7 @@ export default function TableCustomers() {
 
   useEffect(() => {
     const fetchCustomers = async () => {
-      const { data } = await getAll('customer1');
+      const { data } = await getAll('customer10');
       setCustomers(data);
     };
     fetchCustomers();
@@ -38,6 +38,7 @@ export default function TableCustomers() {
         <TableHead>
           <StyledTableRow>
           <StyledTableCell>Data de Entrada</StyledTableCell>
+          <StyledTableCell>Data de Saída</StyledTableCell>
             <StyledTableCell align="center">Nome</StyledTableCell>
             <StyledTableCell align="center">Placa</StyledTableCell>
             <StyledTableCell align="center">Responsável</StyledTableCell>
@@ -50,6 +51,9 @@ export default function TableCustomers() {
             <StyledTableRow key={customer._id}>
               <StyledTableCell component="th" scope="row">
                 {customer.entryTime}
+              </StyledTableCell>
+              <StyledTableCell component="th" scope="row">
+                {customer.outTime}
               </StyledTableCell>
               <StyledTableCell component="th" scope="row">
                 {customer.name}

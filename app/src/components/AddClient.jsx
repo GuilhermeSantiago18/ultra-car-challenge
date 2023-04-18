@@ -1,5 +1,5 @@
 import { Box, TextField, Button, Select, MenuItem, FormControl } from "@mui/material";
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import { insert } from "../service/api.js";
 
 
@@ -25,12 +25,11 @@ export default function AddClient() {
       responsable: queryData.responsable,
       license: queryData.license,
       phone: queryData.phone,
-      entryTime: formattedTime
+      entryTime: formattedTime,
+      outTime: 'Serviço em andamento',
     };
-
-  
-    const crud = await insert('customer1', data);
-    console.log(crud)
+    await insert('customer10', data);
+    window.location.reload()
   };
 
   return (

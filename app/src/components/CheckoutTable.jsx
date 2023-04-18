@@ -1,16 +1,28 @@
-import { Button, Container, FormControl, TextField, Typography, Grid } from '@mui/material';
-import React, { useState } from 'react'
-import { getAll } from '../service/api';
-import Header from './Header';
-import TableCustomers from './TableCustomers';
-import TableAutoParts from './TableAutoParts';
-import FinalTableAutoParts from './FinalTableCheckout';
-import FinalTableCustomer from './FinalTableCustomer';
+import React, { useState } from "react";
+import {
+  Button,
+  Container,
+  FormControl,
+  TextField,
+  Typography,
+  Grid,
+} from "@mui/material";
+import { getAll, updateItem } from "../service/api";
+import Header from "./Header";
+import FinalTableCustomer from "./FinalTableCustomer";
+import FinalTableService from "./FinalTableService";
+import { useContext } from "react";
+import Context from "../context/Context";
+import { useNavigate } from "react-router-dom";
 
 export default function CheckoutTable() {
   const [searchInput, setSearchInput] = useState("");
   const [customer, setCustomer] = useState([]);
   const [autoParts, setAutoParts] = useState([]);
+
+  const navigate = useNavigate();
+
+  const { valueTotal } = useContext(Context);
 
   const handleSearchLicense = (event) => {
     setSearchInput(event.target.value);
@@ -19,12 +31,16 @@ export default function CheckoutTable() {
   const handleSearchSubmit = async (event) => {
     event.preventDefault();
     try {
-      const { data } = await getAll("customer1");
-      const clientInformations = data.filter((client) => client.license === searchInput);
-      setCustomer(clientInformations)
-      const parts = await getAll("parts5");
-      const autoPartsInformations = parts.data.filter((autoParts) => autoParts.license === searchInput);
-      setAutoParts(autoPartsInformations)
+      const { data } = await getAll("customer10");
+      const clientInformations = data.filter(
+        (client) => client.license === searchInput
+      );
+      setCustomer(clientInformations);
+      const parts = await getAll("parts10");
+      const autoPartsInformations = parts.data.filter(
+        (autoParts) => autoParts.license === searchInput
+      );
+      setAutoParts(autoPartsInformations);
     } catch (error) {
       console.error(error);
     }
@@ -40,7 +56,12 @@ export default function CheckoutTable() {
           value={searchInput}
           onChange={handleSearchLicense}
         />
-        <Button type="submit" variant="contained" sx={{ mt: 2 }} onClick={handleSearchSubmit}>
+        <Button
+          type="submit"
+          variant="contained"
+          sx={{ mt: 2 }}
+          onClick={handleSearchSubmit}
+        >
           Buscar
         </Button>
       </FormControl>
@@ -51,11 +72,11 @@ export default function CheckoutTable() {
             <FinalTableCustomer customer={customer} />
           </Grid>
           <Grid item xs={12} md={16}>
-            <Typography variant="h5">Informações das Peças</Typography>
-            <FinalTableAutoParts autoParts={autoParts}/>
+            <Typography variant="h5">Informações do serviço</Typography>
+            <FinalTableService autoParts={autoParts} />
           </Grid>
         </Grid>
       )}
     </Container>
-  )
+  );
 }

@@ -6,10 +6,9 @@ import axios from "axios";
 
 export const getAll = async (endpoint) => axios.get(`${ENDPOINT_BASE}${endpoint}`);
 
-export const updateItem = async (id, payload) => (
-  axios.put(`${ENDPOINT_BASE}/${id}`, payload)
-);
-
+export const updateItem = async (endpoint, id, payload) => {
+  axios.put(`${ENDPOINT_BASE}${endpoint}/${id}`, payload);
+}
 export const deleteItem = async (id) => axios.delete(`${ENDPOINT_BASE}/${id}`);
 
 export const insert = async (endpoint, payload) => axios.post(`${ENDPOINT_BASE}${endpoint}`, payload);

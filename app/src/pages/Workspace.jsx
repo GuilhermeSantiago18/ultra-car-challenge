@@ -24,7 +24,7 @@ function Workspace() {
            <Header />
       <Tabs value={value} onChange={handleChange}>
         <Tab label="Clientes" fullWidth />
-        <Tab label="Tabela de peças" />
+        <Tab label="Tabela de serviços" />
         <Tab label="Adicionar novo cliente" />
       </Tabs>
       {value === 0 && (

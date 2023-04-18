@@ -16,7 +16,7 @@ import { getAll, insert } from "../service/api";
 import { useNavigate } from "react-router-dom";
 
 const StyledTableCell = styled(TableCell)({
-  backgroundColor: "#C1C1C1",
+  backgroundColor: "white",
   color: "#000",
   fontWeight: "bold",
 });
@@ -26,14 +26,14 @@ const StyledTableRow = styled(TableRow)({
 });
 
 export default function TableAutoParts() {
-  const [parts, setParts] = useState([])
-  const [queryParts, setQueryParts] = useState({})
+  const [parts, setParts] = useState([]);
+  const [queryParts, setQueryParts] = useState({});
 
-  const navigate = useNavigate()
+  const navigate = useNavigate();
 
   useEffect(() => {
     const fetchParts = async () => {
-      const { data } = await getAll('parts5');
+      const { data } = await getAll("parts10");
       setParts(data);
     };
     fetchParts();
@@ -45,74 +45,106 @@ export default function TableAutoParts() {
   };
 
   const handleClickParts = async (event) => {
-      event.preventDefault();
-      const parts = {
-        motor: queryParts.motor,
-        quantity: queryParts.quantity,
-        value: queryParts.value,
-        license: queryParts.license
-      }
-      await insert('parts5', parts)
-  }
+    event.preventDefault();
+    const parts = {
+      motor: queryParts.motor,
+      quantity: queryParts.quantity,
+      value: queryParts.value,
+      license: queryParts.license,
+      description: queryParts.description,
+      service: queryParts.service,
+    };
+    await insert("parts10", parts);
+    window.location.reload();
+  };
   return (
     <Container>
-    <TableContainer component={Paper} sx={{ minWidth: 900 }}>
-      <Table>
-        <TableHead>
-          <StyledTableRow>
-            <StyledTableCell>Placa</StyledTableCell>
-            <StyledTableCell align="center">Peça</StyledTableCell>
-            <StyledTableCell align="center">Quantidade</StyledTableCell>
-            <StyledTableCell align="right">Valor unitário</StyledTableCell>
-          </StyledTableRow>
-        </TableHead>
-        <TableBody>
-          {parts.map((employee) => (
-            <StyledTableRow key={employee._id}>
-              <StyledTableCell component="th" scope="row">
-                {employee.license}
-                </StyledTableCell>
-              <StyledTableCell component="th" scope="row" align="center">
-                {employee.motor}
+      <TableContainer component={Paper} sx={{ minWidth: 900 }}>
+        <Table>
+          <TableHead>
+            <StyledTableRow>
+              <StyledTableCell>Placa</StyledTableCell>
+              <StyledTableCell align="center">
+                Descrição do serviço
               </StyledTableCell>
-              <StyledTableCell component="th" scope="row" align="center">
-                {employee.quantity}
-              </StyledTableCell>
-              <StyledTableCell align="right">{employee.value}</StyledTableCell>
+              <StyledTableCell align="center">Peça a trocar</StyledTableCell>
+              <StyledTableCell align="center">Quantidade</StyledTableCell>
+              <StyledTableCell align="right">Valor unitário por peça</StyledTableCell>
+              <StyledTableCell align="right">Valor do serviço</StyledTableCell>
             </StyledTableRow>
-          ))}
-        </TableBody>
-      </Table>
-    </TableContainer>
-    <TextField
-          label="Placa"
-          variant="outlined"
-          name="license"
-          sx={{mb: 1}}
-          onChange={handleChange}
-        />  
-    <TextField
-          label="Peça"
-          variant="outlined"
-          name="motor"
-          sx={{mb: 1}}
-          onChange={handleChange}
-        />
-        <TextField
-          label="Quantidade"
-          variant="outlined"
-          name="quantity"
-          sx={{mb: 1}}
-          onChange={handleChange}
-        />
-        <TextField
-          label="Valor"
-          variant="outlined"
-          name="value"
-          sx={{mb: 1}}
-          onChange={handleChange}
-        />
-        <Button type="submit" variant="contained" onClick={handleClickParts}>Adicionar</Button>
+          </TableHead>
+          <TableBody>
+            {parts.map((employee) => (
+              <StyledTableRow key={employee._id}>
+                <StyledTableCell component="th" scope="row">
+                  {employee.license}
+                </StyledTableCell>
+                <StyledTableCell component="th" scope="row" align="center">
+                  {employee.description}
+                </StyledTableCell>
+                <StyledTableCell component="th" scope="row" align="center">
+                  {employee.motor}
+                </StyledTableCell>
+
+                <StyledTableCell component="th" scope="row" align="center">
+                  {employee.quantity}
+                </StyledTableCell>
+                <StyledTableCell component="th" scope="row" align="center">
+                  {employee.value}
+                </StyledTableCell>
+                <StyledTableCell component="th" scope="row" align="center">
+                  {employee.service}
+                </StyledTableCell>
+              </StyledTableRow>
+            ))}
+          </TableBody>
+        </Table>
+      </TableContainer>
+      <TextField
+        label="Placa"
+        variant="outlined"
+        name="license"
+        sx={{ mb: 1 }}
+        onChange={handleChange}
+      />
+       <TextField
+        label="Descrição"
+        variant="outlined"
+        name="description"
+        sx={{ mb: 1 }}
+        onChange={handleChange}
+      />
+      <TextField
+        label="Peça"
+        variant="outlined"
+        name="motor"
+        sx={{ mb: 1 }}
+        onChange={handleChange}
+      />
+      <TextField
+        label="Quantidade"
+        variant="outlined"
+        name="quantity"
+        sx={{ mb: 1 }}
+        onChange={handleChange}
+      />
+      <TextField
+        label="Valor"
+        variant="outlined"
+        name="value"
+        sx={{ mb: 1 }}
+        onChange={handleChange}
+      />
+       <TextField
+        label="Valor do serviço"
+        variant="outlined"
+        name="service"
+        sx={{ mb: 1 }}
+        onChange={handleChange}
+      />
+      <Button type="submit" variant="contained" onClick={handleClickParts}>
+        Adicionar
+      </Button>
     </Container>
   );
 }
