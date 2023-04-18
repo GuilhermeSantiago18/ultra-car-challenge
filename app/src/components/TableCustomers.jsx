@@ -26,7 +26,7 @@ export default function TableCustomers() {
 
   useEffect(() => {
     const fetchCustomers = async () => {
-      const { data } = await getAll('customer99');
+      const { data } = await getAll('newcostumer');
       setCustomers(data);
     };
     fetchCustomers();

@@ -1,6 +1,5 @@
 import { useState } from "react";
-import { Box, Button, Container, Tab, Tabs, Typography } from "@mui/material";
-import { useNavigate } from "react-router-dom";
+import { Box, Container, Tab, Tabs, Typography } from "@mui/material";
 import AddClient from "../components/AddClient";
 import TableCustomers from "../components/TableCustomers";
 import TableAutoParts from "../components/TableAutoParts";
@@ -14,7 +13,7 @@ function Workspace() {
   };
 
   return (
-      <Container display="flex" flexDirection="column" alignItems="center" p={2} sx={12}>
+      <Container p={2}>
         <Header />
       <Tabs value={value} onChange={handleChange}>
         <Tab label="Clientes" fullWidth />
