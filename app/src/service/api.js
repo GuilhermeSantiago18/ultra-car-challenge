@@ -14,4 +14,4 @@ export const deleteItem = async (id) => axios.delete(`${ENDPOINT_BASE}/${id}`);
 
 export const insert = async (endpoint, payload) => axios.post(`${ENDPOINT_BASE}${endpoint}`, payload);
 
-export const getItem = async (id) => axios.get(`${ENDPOINT_BASE}/${id}`);
+export const getItem = async (endpoint, id) => axios.get(`${ENDPOINT_BASE}${endpoint}/${id}`);
