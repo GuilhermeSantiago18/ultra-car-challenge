@@ -10,7 +10,7 @@ export default function Header() {
     <div>
       <Box
           sx={{
-            maxWidth: { xs: 150, md: 150 },
+            minWidth: { xs: 200, md: 200 },
           }}
           component="img"
           src="https://ultracar.com.br/sistema-gestao-oficina-mecanica/programa-gerenciamento-oficina-mecanica/wp-content/uploads/2019/09/LOGO-TOPO-SITE.png"

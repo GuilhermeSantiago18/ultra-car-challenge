@@ -37,7 +37,8 @@ export default function TableCustomers() {
       <Table>
         <TableHead>
           <StyledTableRow>
-            <StyledTableCell>Nome</StyledTableCell>
+          <StyledTableCell>Data de Entrada</StyledTableCell>
+            <StyledTableCell align="center">Nome</StyledTableCell>
             <StyledTableCell align="center">Placa</StyledTableCell>
             <StyledTableCell align="center">Responsável</StyledTableCell>
             <StyledTableCell align="center">Telefone</StyledTableCell>
@@ -47,6 +48,9 @@ export default function TableCustomers() {
         <TableBody>
           {customers.map((customer) => (
             <StyledTableRow key={customer._id}>
+              <StyledTableCell component="th" scope="row">
+                {customer.entryTime}
+              </StyledTableCell>
               <StyledTableCell component="th" scope="row">
                 {customer.name}
               </StyledTableCell>

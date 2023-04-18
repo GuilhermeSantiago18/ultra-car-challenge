@@ -16,12 +16,16 @@ export default function AddClient() {
 
   const handleSubmit = async (event) => {
     event.preventDefault();
+
+    const currentTime = new Date();
+    const formattedTime = `${currentTime.toLocaleDateString()} ${currentTime.toLocaleTimeString()}`;
     const data = {
       name: queryData.customerName,
       cpf: queryData.CPF,
       responsable: queryData.responsable,
       license: queryData.license,
-      phone: queryData.phone
+      phone: queryData.phone,
+      entryTime: formattedTime
     };
 
   
@@ -61,7 +65,7 @@ export default function AddClient() {
           onChange={handleChange}
         />
         </FormControl>
-      <Select onChange={handleChange} name="responsable" sx={{ width: "20%" }} label="Funcionário">
+      <Select onChange={handleChange} name="responsable" sx={{ width: "20%" }}>
           {EMPLOYEES.map((person, index) => (
             <MenuItem key={index} value={person}>
               {person}

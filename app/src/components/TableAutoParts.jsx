@@ -49,7 +49,8 @@ export default function TableAutoParts() {
       const parts = {
         motor: queryParts.motor,
         quantity: queryParts.quantity,
-        value: queryParts.value
+        value: queryParts.value,
+        license: queryParts.license
       }
       await insert('parts5', parts)
   }
@@ -59,15 +60,19 @@ export default function TableAutoParts() {
       <Table>
         <TableHead>
           <StyledTableRow>
-            <StyledTableCell>Peça</StyledTableCell>
+            <StyledTableCell>Placa</StyledTableCell>
+            <StyledTableCell align="center">Peça</StyledTableCell>
             <StyledTableCell align="center">Quantidade</StyledTableCell>
-            <StyledTableCell align="right">Valor</StyledTableCell>
+            <StyledTableCell align="right">Valor unitário</StyledTableCell>
           </StyledTableRow>
         </TableHead>
         <TableBody>
           {parts.map((employee) => (
             <StyledTableRow key={employee._id}>
               <StyledTableCell component="th" scope="row">
+                {employee.license}
+                </StyledTableCell>
+              <StyledTableCell component="th" scope="row" align="center">
                 {employee.motor}
               </StyledTableCell>
               <StyledTableCell component="th" scope="row" align="center">
@@ -79,6 +84,13 @@ export default function TableAutoParts() {
         </TableBody>
       </Table>
     </TableContainer>
+    <TextField
+          label="Placa"
+          variant="outlined"
+          name="license"
+          sx={{mb: 1}}
+          onChange={handleChange}
+        />  
     <TextField
           label="Peça"
           variant="outlined"
