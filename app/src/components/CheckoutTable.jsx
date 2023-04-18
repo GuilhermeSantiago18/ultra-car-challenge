@@ -29,12 +29,12 @@ export default function CheckoutTable() {
   const handleSearchSubmit = async (event) => {
     event.preventDefault();
     try {
-      const { data } = await getAll("customer10");
+      const { data } = await getAll("newcustomer");
       const clientInformations = data.filter(
         (client) => client.license === searchInput
       );
       setCustomer(clientInformations);
-      const parts = await getAll("parts10");
+      const parts = await getAll("autoparts");
       const autoPartsInformations = parts.data.filter(
         (autoParts) => autoParts.license === searchInput
       );
@@ -53,7 +53,7 @@ export default function CheckoutTable() {
       outTime: formattedTime,
       _id: undefined,
     };
-    await updateItem("customer10", customer[0]._id, payload);
+    await updateItem("newcustomer", customer[0]._id, payload);
     navigate("/workspace");
   };
 
