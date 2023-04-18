@@ -2,73 +2,85 @@ import { Box, TextField, Button, Select, MenuItem, FormControl } from "@mui/mate
 import { useState, useEffect } from "react";
 import { newCustomer } from "../service/api.js";
 
-export default function AddClient() {
-  const [clientName, setClientName] = useState("");
-  const [CPF, setCPF] = useState("");
-  const [employees, setEmployees] = useState([]);
-  const [selectedEmployee, setSelectedEmployee] = useState("");
 
-  const handleChangeName = ({ target }) => {
-    setClientName(target.value);
-  };
-  const handleChangeCPF = ({ target }) => {
-    setCPF(target.value);
+const EMPLOYEES = ['Joao', 'Felipe', 'Maria', 'Sandra'];
+
+export default function AddClient() {
+  const [queryData, setQueryData] = useState({});
+  const [employees, setEmployees] = useState([]);
+
+
+  const handleChange = (event) => {
+    const { name, value } = event.target;
+    setQueryData({ ...queryData, [name]: value });
   };
 
   const handleSubmit = async (event) => {
     event.preventDefault();
     const data = {
-      name: clientName,
-      CPF,
-      responsable: selectedEmployee,
+      name: queryData.customerName,
+      cpf: queryData.CPF,
+      responsable: queryData.responsable,
+      license: queryData.license,
+      phone: queryData.phone
     };
-    const crud = await newCustomer('customers1', data)
+
+  
+    const crud = await newCustomer('customer1', data);
     console.log(crud)
-    setCPF('')
-    setClientName('')
-    setSelectedEmployee('')
   };
 
-  const handleChangeResponsable = ({ target }) => {
-    setSelectedEmployee(target.value);
-  };
 
   useEffect(() => {
     const fetchResponsables = async () => {
-      const { data } = await requestEmployees();
-      setEmployees(data);
+      // const { data } = await requestEmployees();
+      // setEmployees(data);
     };
     fetchResponsables();
   }, []);
 
   return (
     <Box sx={{ minWidth: 900 }}>
-      <Box>
         <FormControl>
         <TextField
           label="Nome do Cliente"
           variant="outlined"
-          value={clientName}
-          onChange={handleChangeName}
+          name="customerName"
+          onChange={handleChange}
+          sx={{mb: 1}}
         />
         <TextField
           label="CPF"
           variant="outlined"
-          value={CPF}
-          onChange={handleChangeCPF}
+          name="CPF"
+          onChange={handleChange}
+          sx={{mb: 1}}
+        />
+          <TextField
+          label="Placa"
+          variant="outlined"
+          name="license"
+          onChange={handleChange}
+          sx={{mb: 1}}
+        />
+        <TextField
+          label="Telefone"
+          variant="outlined"
+          name="phone"
+          sx={{mb: 1}}
+          onChange={handleChange}
         />
         </FormControl>
-        <Button variant="contained" type="submit" onClick={handleSubmit}>
-          Adicionar Cliente
-        </Button>
-      </Box>
-      <Select value={selectedEmployee} onChange={handleChangeResponsable} sx={{ width: "20%" }}>
-          {employees.map((person) => (
-            <MenuItem key={person.id} value={person.name}>
-              {person.name}
+      <Select onChange={handleChange} name="responsable" sx={{ width: "20%" }} label="Funcionário">
+          {EMPLOYEES.map((person, index) => (
+            <MenuItem key={index} value={person}>
+              {person}
             </MenuItem>
           ))}
         </Select>
+        <Button variant="contained" type="submit" onClick={handleSubmit}>
+          Adicionar Cliente
+        </Button>
     </Box>
   );
 }

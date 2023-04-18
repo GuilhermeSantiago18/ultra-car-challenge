@@ -4,7 +4,7 @@ import axios from "axios";
  const ENDPOINT_BASE = `https://crudcrud.com/api/3c7df8467806458990fc90ab57448531/`
 
 
-export const requestCustomers = async () => axios.get(ENDPOINT_BASE);
+export const request = async (endpoint) => axios.get(`${ENDPOINT_BASE}${endpoint}`);
 
 export const updateItem = async (id, payload) => (
   axios.put(`${ENDPOINT_BASE}/${id}`, payload)

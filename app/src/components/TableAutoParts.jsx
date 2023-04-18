@@ -9,6 +9,7 @@ import {
   TableRow,
   Paper,
 } from "@mui/material";
+import { request } from "../service/api";
 
 const StyledTableCell = styled(TableCell)({
   backgroundColor: "#C1C1C1",
@@ -20,36 +21,36 @@ const StyledTableRow = styled(TableRow)({
   backgroundColor: "#CFD8DC",
 });
 
-export default function TableEmployees() {
-  const [employees, setEmployees] = useState([]);
+export default function TableAutoParts() {
+  const [parts, setParts] = useState([])
 
   useEffect(() => {
-    const fetchEmployees = async () => {
-      const { data } = await requestEmployees();
-      setEmployees(data);
+    const fetchParts = async () => {
+      const { data } = await request('parts5');
+      setParts(data);
     };
-    fetchEmployees();
+    fetchParts();
   }, []);
   return (
     <TableContainer component={Paper} sx={{ minWidth: 900 }}>
       <Table>
         <TableHead>
           <StyledTableRow>
-            <StyledTableCell>Name</StyledTableCell>
-            <StyledTableCell align="center">Status</StyledTableCell>
-            <StyledTableCell align="right">CPF</StyledTableCell>
+            <StyledTableCell>Peça</StyledTableCell>
+            <StyledTableCell align="center">Quantidade</StyledTableCell>
+            <StyledTableCell align="right">Valor</StyledTableCell>
           </StyledTableRow>
         </TableHead>
         <TableBody>
-          {employees.map((employee) => (
-            <StyledTableRow key={employee.id}>
+          {parts.map((employee) => (
+            <StyledTableRow key={employee._id}>
               <StyledTableCell component="th" scope="row">
-                {employee.name}
+                {employee.motor}
               </StyledTableCell>
               <StyledTableCell component="th" scope="row" align="center">
-                {employee.status}
+                {employee.quantidade}
               </StyledTableCell>
-              <StyledTableCell align="right">{employee.cpf}</StyledTableCell>
+              <StyledTableCell align="right">{employee.valor}</StyledTableCell>
             </StyledTableRow>
           ))}
         </TableBody>

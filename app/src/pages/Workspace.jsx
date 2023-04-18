@@ -3,7 +3,7 @@ import { Box, Button, ImageList, Tab, Tabs, Typography } from "@mui/material";
 import { useNavigate } from "react-router-dom";
 import AddClient from "../components/AddClient";
 import TableCustomers from "../components/TableCustomers";
-import TableEmployees from "../components/TableEmployees";
+import TableAutoParts from "../components/TableAutoParts";
 import theme from "../themes/theme";
 import Header from "../components/Header";
 
@@ -19,8 +19,8 @@ function Workspace() {
       <Box justifyContent="space-between" p={2} sx={12}>
            <Header />
       <Tabs value={value} onChange={handleChange}>
-        <Tab label="Clientes do dia" fullWidth />
-        <Tab label="Funcionários" />
+        <Tab label="Clientes" fullWidth />
+        <Tab label="Tabela de peças" />
         <Tab label="Adicionar novo cliente" />
       </Tabs>
       {value === 0 && (
@@ -30,7 +30,7 @@ function Workspace() {
       )}
       {value === 1 && (
         <Box p={2}>
-          <Typography variant="h6">{<TableEmployees />}</Typography>
+          <Typography variant="h6">{<TableAutoParts />}</Typography>
         </Box>
       )}
       {value === 2 && (

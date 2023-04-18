@@ -9,6 +9,7 @@ import {
   TableHead,
   TableRow,
 } from "@mui/material";
+import { request } from "../service/api";
 
 const StyledTableCell = styled(TableCell)({
   backgroundColor: "#C1C1C1",
@@ -25,7 +26,7 @@ export default function TableCustomers() {
 
   useEffect(() => {
     const fetchCustomers = async () => {
-      const { data } = await requestCustomers();
+      const { data } = await request('customers1');
       setCustomers(data);
     };
     fetchCustomers();
@@ -36,23 +37,27 @@ export default function TableCustomers() {
       <Table>
         <TableHead>
           <StyledTableRow>
-            <StyledTableCell>Name</StyledTableCell>
+            <StyledTableCell>Nome</StyledTableCell>
             <StyledTableCell align="center">Placa</StyledTableCell>
             <StyledTableCell align="center">Responsável</StyledTableCell>
             <StyledTableCell align="center">CPF</StyledTableCell>
+            <StyledTableCell align="center">Telefone</StyledTableCell>
           </StyledTableRow>
         </TableHead>
         <TableBody>
           {customers.map((customer) => (
-            <StyledTableRow key={customer.id}>
+            <StyledTableRow key={customer._id}>
               <StyledTableCell component="th" scope="row">
                 {customer.name}
               </StyledTableCell>
               <StyledTableCell component="th" scope="row" align="center">
-                {customer.placa}
+                {customer.license}
               </StyledTableCell>
               <StyledTableCell component="th" scope="row" align="center">
                 {customer.responsable}
+              </StyledTableCell>
+              <StyledTableCell component="th" scope="row" align="center">
+                {customer.phone}
               </StyledTableCell>
               <StyledTableCell align="center">{customer.cpf}</StyledTableCell>
             </StyledTableRow>
