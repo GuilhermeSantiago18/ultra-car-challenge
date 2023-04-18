@@ -1,5 +1,5 @@
 import { Box, TextField, Button, Select, MenuItem, FormControl } from "@mui/material";
-import { useState, useEffect } from "react";
+import { useState } from "react";
 import { insert } from "../service/api.js";
 
 

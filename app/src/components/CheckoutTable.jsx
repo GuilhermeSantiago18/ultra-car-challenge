@@ -1,4 +1,3 @@
-import React, { useState } from "react";
 import {
   Button,
   Container,
@@ -8,12 +7,12 @@ import {
   Grid,
 } from "@mui/material";
 import { getAll, updateItem } from "../service/api";
-import Header from "./Header";
 import FinalTableCustomer from "./FinalTableCustomer";
 import FinalTableService from "./FinalTableService";
-import { useContext } from "react";
-import Context from "../context/Context";
 import { useNavigate } from "react-router-dom";
+import { useContext, useState } from "react";
+import Context from "../context/Context";
+
 
 export default function CheckoutTable() {
   const [searchInput, setSearchInput] = useState("");
@@ -21,7 +20,6 @@ export default function CheckoutTable() {
   const [autoParts, setAutoParts] = useState([]);
 
   const navigate = useNavigate();
-
   const { valueTotal } = useContext(Context);
 
   const handleSearchLicense = (event) => {
@@ -46,9 +44,21 @@ export default function CheckoutTable() {
     }
   };
 
+  const handleClick = async (event) => {
+    event.preventDefault();
+    const currentTime = new Date();
+    const formattedTime = `${currentTime.toLocaleDateString()} ${currentTime.toLocaleTimeString()}`;
+    const payload = {
+      ...customer[0],
+      outTime: formattedTime,
+      _id: undefined,
+    };
+    await updateItem("customer10", customer[0]._id, payload);
+    navigate('/workspace')
+  };
+
   return (
     <Container>
-      <Header />
       <FormControl onSubmit={handleSearchSubmit}>
         <TextField
           label="Digite a placa do carro"
@@ -75,8 +85,20 @@ export default function CheckoutTable() {
             <Typography variant="h5">Informações do serviço</Typography>
             <FinalTableService autoParts={autoParts} />
           </Grid>
+          <Typography variant="h5">
+            Serviço total:{" "}
+            {valueTotal.toLocaleString("pt-BR", {
+              style: "currency",
+              currency: "BRL",
+            })}
+          </Typography>
+          <Button variant="contained" onClick={handleClick}>
+            Finalizar serviço
+          </Button>
         </Grid>
       )}
+        
+
     </Container>
   );
 }
