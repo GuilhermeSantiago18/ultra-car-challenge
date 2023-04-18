@@ -31,7 +31,7 @@ export default function AddClient() {
       entryTime: formattedTime,
       outTime: 'Serviço em andamento',
     };
-    await insert('customer99', data);
+    await insert('newcustomer', data);
     navigate(0)
   };
 
