@@ -1,5 +1,0 @@
-[
-  { "id": "1", "name": "joao", "placa": "MV8KKD", "responsable": "Funcionario2", "cpf": "12345678911" },
-  { "id": "2", "name": "maria", "placa": "BV8DCD", "responsable": "Funcionario3","cpf": "11111111111" },
-  { "id": "3", "name": "fulano", "placa": "WV8AKD","responsable": "", "cpf": "99999999999" }
-]
