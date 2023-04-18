@@ -1,5 +1,4 @@
 import { useState, useEffect } from "react";
-import { requestCustomers } from "../service/api";
 import { styled } from "@mui/system";
 import {
   Paper,

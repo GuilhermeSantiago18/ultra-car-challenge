@@ -1,15 +1,15 @@
-import { Box, TextField, Button, Select, MenuItem } from "@mui/material";
+import { Box, TextField, Button, Select, MenuItem, FormControl } from "@mui/material";
 import { useState, useEffect } from "react";
-import { requestEmployees, requestNewCustomer } from "../service/api";
+import { newCustomer } from "../service/api.js";
 
 export default function AddClient() {
-  const [name, setName] = useState("");
+  const [clientName, setClientName] = useState("");
   const [CPF, setCPF] = useState("");
   const [employees, setEmployees] = useState([]);
   const [selectedEmployee, setSelectedEmployee] = useState("");
 
   const handleChangeName = ({ target }) => {
-    setName(target.value);
+    setClientName(target.value);
   };
   const handleChangeCPF = ({ target }) => {
     setCPF(target.value);
@@ -18,11 +18,15 @@ export default function AddClient() {
   const handleSubmit = async (event) => {
     event.preventDefault();
     const data = {
-      name,
+      name: clientName,
       CPF,
       responsable: selectedEmployee,
     };
-    await requestNewCustomer(data);
+    const crud = await newCustomer('customers1', data)
+    console.log(crud)
+    setCPF('')
+    setClientName('')
+    setSelectedEmployee('')
   };
 
   const handleChangeResponsable = ({ target }) => {
@@ -40,10 +44,11 @@ export default function AddClient() {
   return (
     <Box sx={{ minWidth: 900 }}>
       <Box>
+        <FormControl>
         <TextField
           label="Nome do Cliente"
           variant="outlined"
-          value={name}
+          value={clientName}
           onChange={handleChangeName}
         />
         <TextField
@@ -52,17 +57,18 @@ export default function AddClient() {
           value={CPF}
           onChange={handleChangeCPF}
         />
-        <Select value={selectedEmployee} onChange={handleChangeResponsable} sx={{ width: "20%" }}>
+        </FormControl>
+        <Button variant="contained" type="submit" onClick={handleSubmit}>
+          Adicionar Cliente
+        </Button>
+      </Box>
+      <Select value={selectedEmployee} onChange={handleChangeResponsable} sx={{ width: "20%" }}>
           {employees.map((person) => (
             <MenuItem key={person.id} value={person.name}>
               {person.name}
             </MenuItem>
           ))}
         </Select>
-        <Button variant="contained" type="submit" onClick={handleSubmit}>
-          Adicionar Cliente
-        </Button>
-      </Box>
     </Box>
   );
 }

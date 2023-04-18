@@ -16,8 +16,8 @@ function Workspace() {
 
 
   return (
-      <Box justifyContent="space-between" p={2}>
-          <Header />
+      <Box justifyContent="space-between" p={2} sx={12}>
+           <Header />
       <Tabs value={value} onChange={handleChange}>
         <Tab label="Clientes do dia" fullWidth />
         <Tab label="Funcionários" />
