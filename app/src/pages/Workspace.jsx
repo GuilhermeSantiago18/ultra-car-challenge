@@ -42,7 +42,7 @@ function Workspace() {
           <Typography variant="h6">{<AddClient />}</Typography>
         </Box>
       )}
-      <Button variant="contained" onClick={handleCLick}>Finalizar Atendimento</Button>
+      <Button variant="contained" onClick={handleCLick}>Finalizar Pedido</Button>
     </Box>
   );
 }
