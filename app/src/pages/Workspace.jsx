@@ -1,5 +1,5 @@
 import { useState } from "react";
-import { Box, Button, Tab, Tabs, Typography } from "@mui/material";
+import { Box, Button, Container, Tab, Tabs, Typography } from "@mui/material";
 import { useNavigate } from "react-router-dom";
 import AddClient from "../components/AddClient";
 import TableCustomers from "../components/TableCustomers";
@@ -9,19 +9,13 @@ import Header from "../components/Header";
 function Workspace() {
   const [value, setValue] = useState(0);
 
-  const navigate = useNavigate()
-
   const handleChange = (_, newValue) => {
     setValue(newValue);
   };
-  const handleCLick = () => {
-    navigate('/checkout')
-  }
-
 
   return (
-      <Box justifyContent="space-between" p={2} sx={12}>
-           <Header />
+      <Container display="flex" flexDirection="column" alignItems="center" p={2} sx={12}>
+        <Header />
       <Tabs value={value} onChange={handleChange}>
         <Tab label="Clientes" fullWidth />
         <Tab label="Tabela de serviços" />
@@ -42,8 +36,7 @@ function Workspace() {
           <Typography variant="h6">{<AddClient />}</Typography>
         </Box>
       )}
-      <Button variant="contained" onClick={handleCLick}>Finalizar Pedido</Button>
-    </Box>
+    </Container>
   );
 }
 

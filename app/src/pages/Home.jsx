@@ -32,16 +32,14 @@ function Home() {
   return (
     <ThemeProvider theme={theme}>
       <CssBaseline />
-      <Stack>
-        <Box
-          sx={{
-            minWidth: { xs: 250, md: 250 },
-          }}
+      <Stack sx={{ alignItems: "center", p: 10}}>
+      <Box
+          sx={{alignItems: "center", justifyContent: "center", width: "300px"}}
           component="img"
           src="https://ultracar.com.br/sistema-gestao-oficina-mecanica/programa-gerenciamento-oficina-mecanica/wp-content/uploads/2019/09/LOGO-TOPO-SITE.png"
         />
         <Stack p={15}>
-          <FormControl onSubmit={handleSubmit} sx={{ width: "100%"}}>
+          <FormControl onSubmit={handleSubmit}>
             <TextField
               sx={{mb: 1}}
               label="Usuário"
@@ -57,10 +55,10 @@ function Home() {
               value={password}
               onChange={handlePasswordChange}
             />
-          </FormControl>
           <Button variant="contained" type="submit" onClick={handleSubmit}>
             Entrar
           </Button>
+          </FormControl>
         </Stack>
       </Stack>
     </ThemeProvider>

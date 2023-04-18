@@ -11,12 +11,13 @@ import {
   Container,
   TextField,
   Button,
+  Stack
 } from "@mui/material";
 import { getAll, insert } from "../service/api";
 import { useNavigate } from "react-router-dom";
 
 const StyledTableCell = styled(TableCell)({
-  backgroundColor: "white",
+  backgroundColor: "#46C7CF",
   color: "#000",
   fontWeight: "bold",
 });
@@ -55,7 +56,7 @@ export default function TableAutoParts() {
       service: queryParts.service,
     };
     await insert("parts10", parts);
-    window.location.reload();
+    navigate(0)
   };
   return (
     <Container>
@@ -100,6 +101,7 @@ export default function TableAutoParts() {
           </TableBody>
         </Table>
       </TableContainer>
+      <Stack>
       <TextField
         label="Placa"
         variant="outlined"
@@ -108,7 +110,7 @@ export default function TableAutoParts() {
         onChange={handleChange}
       />
        <TextField
-        label="Descrição"
+        label="Descrição do serviço"
         variant="outlined"
         name="description"
         sx={{ mb: 1 }}
@@ -142,9 +144,11 @@ export default function TableAutoParts() {
         sx={{ mb: 1 }}
         onChange={handleChange}
       />
+      
       <Button type="submit" variant="contained" onClick={handleClickParts}>
         Adicionar
       </Button>
+      </Stack>
     </Container>
   );
 }

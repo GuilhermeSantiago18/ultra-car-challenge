@@ -1,5 +1,6 @@
 import { Box, TextField, Button, Select, MenuItem, FormControl } from "@mui/material";
 import { useState } from "react";
+import { useNavigate } from "react-router-dom";
 import { insert } from "../service/api.js";
 
 
@@ -7,6 +8,8 @@ const EMPLOYEES = ['Joao', 'Felipe', 'Maria', 'Sandra'];
 
 export default function AddClient() {
   const [queryData, setQueryData] = useState({});
+
+  const navigate = useNavigate()
 
 
   const handleChange = (event) => {
@@ -29,7 +32,7 @@ export default function AddClient() {
       outTime: 'Serviço em andamento',
     };
     await insert('customer10', data);
-    window.location.reload()
+    navigate(0)
   };
 
   return (

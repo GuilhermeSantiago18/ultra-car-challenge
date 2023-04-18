@@ -1,27 +1,46 @@
-import { Box, Button } from '@mui/material';
-import { useNavigate } from 'react-router-dom';
+import { AppBar, Box, Button, Stack } from "@mui/material";
+import { useNavigate } from "react-router-dom";
 
 export default function Header() {
-    const navigate = useNavigate();
-    const handleLogout = () => {
-        navigate("/");
-      };
+  const navigate = useNavigate();
+  const handleLogout = () => {
+    navigate("/");
+  };
+
+  const handleCLickCheckout = () => {
+    navigate("/checkout");
+  };
+
   return (
-    <div>
-      <Box
-          sx={{
-            minWidth: { xs: 200, md: 200 },
-          }}
-          component="img"
-          src="https://ultracar.com.br/sistema-gestao-oficina-mecanica/programa-gerenciamento-oficina-mecanica/wp-content/uploads/2019/09/LOGO-TOPO-SITE.png"
-        />
-         <Button
+    <Stack>
+    <Box
+      sx={{
+        width: { xs: 200, md: 200 },
+      }}
+      p={1}
+      component="img"
+      src="https://ultracar.com.br/sistema-gestao-oficina-mecanica/programa-gerenciamento-oficina-mecanica/wp-content/uploads/2019/09/LOGO-TOPO-SITE.png"
+    />
+      <Stack
+        sx={{
+          flexDirection: "row",
+          alignItems: "center",
+          justifyContent: "flex-end",
+          width: "100%",
+          p: 1,
+        }}
+      >
+        <Button sx={{marginRight: 1}} variant="contained" onClick={handleCLickCheckout}>
+          Finalizar Pedido
+        </Button>
+        <Button
           variant="contained"
           onClick={handleLogout}
           style={{ cursor: "pointer" }}
         >
           SAIR
         </Button>
-    </div>
-  )
+      </Stack>
+      </Stack>
+  );
 }

@@ -12,13 +12,13 @@ import {
 import { getAll } from "../service/api";
 
 const StyledTableCell = styled(TableCell)({
-  backgroundColor: "#C1C1C1",
-  color: "#000",
+  backgroundColor: "#45A2D5",
+  color: "white",
   fontWeight: "bold",
 });
 
 const StyledTableRow = styled(TableRow)({
-  backgroundColor: "#CFD8DC",
+  color: "black"
 });
 
 export default function TableCustomers() {
@@ -37,8 +37,8 @@ export default function TableCustomers() {
       <Table>
         <TableHead>
           <StyledTableRow>
-          <StyledTableCell>Data de Entrada</StyledTableCell>
-          <StyledTableCell>Data de Saída</StyledTableCell>
+          <StyledTableCell align="center">Data de Entrada</StyledTableCell>
+          <StyledTableCell align="center">Data de Saída</StyledTableCell>
             <StyledTableCell align="center">Nome</StyledTableCell>
             <StyledTableCell align="center">Placa</StyledTableCell>
             <StyledTableCell align="center">Responsável</StyledTableCell>
