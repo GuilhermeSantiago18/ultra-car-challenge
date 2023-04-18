@@ -33,8 +33,8 @@ export default function TableCustomers() {
   }, []);
 
   return (
-    <TableContainer component={Paper}>
-      <Table sx={{ minWidth: 500 }}>
+    <TableContainer component={Paper} sx={{ minWidth: 900 }}>
+      <Table>
         <TableHead>
           <StyledTableRow>
             <StyledTableCell>Name</StyledTableCell>

@@ -5,30 +5,19 @@ import AddClient from "../components/AddClient";
 import TableCustomers from "../components/TableCustomers";
 import TableEmployees from "../components/TableEmployees";
 import theme from "../themes/theme";
+import Header from "../components/Header";
 
 function Workspace() {
   const [value, setValue] = useState(0);
-  const navigate = useNavigate();
 
   const handleChange = (event, newValue) => {
     setValue(newValue);
   };
 
-  const handleLogout = () => {
-    navigate("/");
-  };
 
   return (
-    <Box width="100%" bgcolor="white">
       <Box justifyContent="space-between" p={2}>
-        <Button
-          variant="contained"
-          onClick={handleLogout}
-          style={{ cursor: "pointer" }}
-        >
-          Logout
-        </Button>
-      </Box>
+          <Header />
       <Tabs value={value} onChange={handleChange}>
         <Tab label="Clientes do dia" fullWidth />
         <Tab label="Funcionários" />
