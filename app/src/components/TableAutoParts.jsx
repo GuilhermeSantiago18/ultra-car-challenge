@@ -17,8 +17,8 @@ import { getAll, insert } from "../service/api";
 import { useNavigate } from "react-router-dom";
 
 const StyledTableCell = styled(TableCell)({
-  backgroundColor: "#46C7CF",
-  color: "#000",
+  backgroundColor: "#45A2D5",
+  color: "white",
   fontWeight: "bold",
 });
 

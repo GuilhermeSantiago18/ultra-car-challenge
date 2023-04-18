@@ -18,7 +18,7 @@ const StyledTableCell = styled(TableCell)({
 });
 
 const StyledTableRow = styled(TableRow)({
-  color: "black"
+  color: "white"
 });
 
 export default function TableCustomers() {

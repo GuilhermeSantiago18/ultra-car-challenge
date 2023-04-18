@@ -1,4 +1,4 @@
-import { Box, TextField, Button, Select, MenuItem, FormControl } from "@mui/material";
+import { Box, TextField, Button, Select, MenuItem, FormControl, Stack, FormLabel, InputLabel } from "@mui/material";
 import { useState } from "react";
 import { useNavigate } from "react-router-dom";
 import { insert } from "../service/api.js";
@@ -36,7 +36,7 @@ export default function AddClient() {
   };
 
   return (
-    <Box sx={{ minWidth: 900 }}>
+    <Stack spaci>
         <FormControl>
         <TextField
           label="Nome do Cliente"
@@ -67,16 +67,19 @@ export default function AddClient() {
           onChange={handleChange}
         />
         </FormControl>
-      <Select onChange={handleChange} name="responsable" sx={{ width: "20%" }}>
+        <FormControl>
+          <InputLabel>Funcionário</InputLabel>
+      <Select onChange={handleChange} name="responsable" label="Funcionário">
           {EMPLOYEES.map((person, index) => (
             <MenuItem key={index} value={person}>
               {person}
             </MenuItem>
           ))}
         </Select>
+        </FormControl>
         <Button variant="contained" type="submit" onClick={handleSubmit}>
           Adicionar Cliente
         </Button>
-    </Box>
+    </Stack>
   );
 }

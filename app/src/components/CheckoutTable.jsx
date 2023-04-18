@@ -5,6 +5,7 @@ import {
   TextField,
   Typography,
   Grid,
+  Stack,
 } from "@mui/material";
 import { getAll, updateItem } from "../service/api";
 import FinalTableCustomer from "./FinalTableCustomer";
@@ -12,7 +13,6 @@ import FinalTableService from "./FinalTableService";
 import { useNavigate } from "react-router-dom";
 import { useContext, useState } from "react";
 import Context from "../context/Context";
-
 
 export default function CheckoutTable() {
   const [searchInput, setSearchInput] = useState("");
@@ -54,11 +54,11 @@ export default function CheckoutTable() {
       _id: undefined,
     };
     await updateItem("customer10", customer[0]._id, payload);
-    navigate('/workspace')
+    navigate("/workspace");
   };
 
   return (
-    <Container>
+    <Stack p={20}>
       <FormControl onSubmit={handleSearchSubmit}>
         <TextField
           label="Digite a placa do carro"
@@ -97,8 +97,6 @@ export default function CheckoutTable() {
           </Button>
         </Grid>
       )}
-        
-
-    </Container>
+    </Stack>
   );
 }
