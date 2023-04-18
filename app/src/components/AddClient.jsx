@@ -31,12 +31,13 @@ export default function AddClient() {
       entryTime: formattedTime,
       outTime: 'Serviço em andamento',
     };
-    await insert('newcustomer', data);
+    const crud = await insert('newcostumer', data);
+    console.log(crud)
     navigate(0)
   };
 
   return (
-    <Stack spaci>
+    <Stack spacing={1}>
         <FormControl>
         <TextField
           label="Nome do Cliente"

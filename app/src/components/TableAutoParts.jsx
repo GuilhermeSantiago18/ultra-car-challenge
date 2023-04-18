@@ -34,7 +34,7 @@ export default function TableAutoParts() {
 
   useEffect(() => {
     const fetchParts = async () => {
-      const { data } = await getAll("autoparts");
+      const { data } = await getAll("parts100");
       setParts(data);
     };
     fetchParts();
@@ -55,7 +55,7 @@ export default function TableAutoParts() {
       description: queryParts.description,
       service: queryParts.service,
     };
-    await insert("autoparts", parts);
+    await insert("parts100", parts);
     navigate(0)
   };
   return (
