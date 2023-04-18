@@ -41,7 +41,7 @@ Ao acessar o frontend, o usuário administrador irá se deparar com uma página 
 
 <br>
 <br>
-## Sugestões ou dúvidas entre em contato através do email guilherme.limasantiago@gmail.com
+Sugestões ou dúvidas entre em contato através do email guilherme.limasantiago@gmail.com
 obrigado!
 
 
